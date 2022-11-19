@@ -31,6 +31,11 @@
           >
             Editar
           </th>
+          <th
+            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+          >
+            Deletar
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -39,7 +44,14 @@
             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $comment->body }}</td>
             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $comment->visible ? 'Sim' : 'Não' }}</td>
             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <a href="{{ route('users.edit', $user->id) }}" class="bg-green-200 rounded-full py-2 px-6">Editar</a>
+                <a href="{{ route('comments.edit', ['user' => $user->id, 'id' => $comment->id]) }}" class="bg-green-200 rounded-full py-2 px-6">Editar</a>
+            </td>
+            <td>
+              <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="rounded-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4">Deletar</button>
+              </form>
             </td>
         </tr>
     @endforeach
