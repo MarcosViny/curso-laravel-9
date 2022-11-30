@@ -30,12 +30,17 @@ class StoreUpdateUserFormRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                "unique:users,email,{$id},id", // Example Unique: select count(*) as aggregate from `users` where `email` = carlos@especializati.com.br and `id` <> 2
+                "unique:users,email,{$id},id" // Example Unique: select count(*) as aggregate from `users` where `email` = carlos@especializati.com.br and `id` <> 2
             ],
             'password' => [
                     'required',
                     'min:6',
                     'max:15'
+            ],
+            'image' => [
+                'nullable',
+                'image',
+                'max:1024'
             ]
         ];
 
