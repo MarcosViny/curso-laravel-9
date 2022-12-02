@@ -50,7 +50,7 @@
               @if ($user->image)
                 <img src="{{ url("storage/{$user->image}") }}" alt="{{ $user->name }}" class="object-cover w-20">
               @else
-                <img src="{{ url("images/favicon.ico}") }}" alt="{{ $user->name }}">
+                <img src="{{url('images/favicon.png')}}" alt="{{ $user->name }}">
               @endif
               {{ $user->name }}
             </td>
